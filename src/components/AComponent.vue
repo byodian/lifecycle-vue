@@ -1,7 +1,5 @@
 <template>
-  <div class="hello">
-    <p>{{ adata.name }}</p>
-  </div>
+    <p class="a-com">{{ adata.name }}</p>
 </template>
 
 <script>
@@ -32,3 +30,9 @@ export default {
 
 }
 </script>
+
+<style  scoped>
+.a-com {
+  outline: 1px dashed blueviolet;
+}
+</style>
