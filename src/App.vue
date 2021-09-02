@@ -1,6 +1,16 @@
 <script>
 import AComponent from "./components/AComponent.vue";
 import BComponent from "./components/BComponent.vue";
+const debounce = function (callback, delay) {
+  let timer
+  return function() {
+    clearTimeout(timer)
+    const args = arguments
+    timer = setTimeout(() => {
+      callback.apply(callback, args)
+    }, delay)
+  }
+}
 
 export default {
   name: "App",
@@ -14,6 +24,7 @@ export default {
       options: {},
       isShow: false,
       visibleFlag: false,
+      uid: 1
     };
   },
   watch: {
@@ -61,6 +72,9 @@ export default {
   },
   mounted() {
     console.log("parent mounted");
+    window.addEventListener('resize', debounce(() => {
+      this.uid += 1
+    }, 300))
   },
   beforeUpdate() {
     console.log("parent beforeUpdate");
@@ -79,6 +93,7 @@ export default {
         :options="options"
         width="100%"
         height="100%"
+        :key="uid"
       />
     </div>
   </div>
