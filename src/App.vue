@@ -1,6 +1,7 @@
 <script>
 import AComponent from "./components/AComponent.vue";
 import BComponent from "./components/BComponent.vue";
+
 const debounce = function (callback, delay) {
   let timer
   return function() {
@@ -23,7 +24,6 @@ export default {
       adata: {},
       options: {},
       isShow: false,
-      visibleFlag: false,
       uid: 1
     };
   },
@@ -44,7 +44,7 @@ export default {
           series: [
             {
               name: 'a',
-              data: [150, 230, 224, 218, 135, 147, 260],
+              data: newData.items,
               type: "line",
             },
           ],
@@ -54,8 +54,11 @@ export default {
       immediate: true,
     },
   },
+  beforeCreate() { 
+    console.log("%cbeforeCreate 父组件", "color: #fbb1be");
+  },
   created() {
-    console.log("%cparent created", "color: pink");
+    console.log("%ccreated 父组件", "color: #fbb1be");
     const promise = new Promise((resolve) => {
       setTimeout(() => {
         resolve("123");
@@ -66,29 +69,34 @@ export default {
       this.adata = {
         name: `byodian${data}`,
         age: "21",
-        items: [1, 2, 4],
+        items: [150, 230, 224, 218, 135, 147, 260],
       };
     });
   },
   mounted() {
-    console.log("parent mounted");
+    console.log("%cmounted 父组件", "color: #fbb1be");
+    // 窗口尺寸变化后，强制刷新图表组件宽高
     window.addEventListener('resize', debounce(() => {
       this.uid += 1
     }, 300))
+
+    this.$nextTick(() => {
+      console.log('%c$nextTick mounted', "color: #fbb1be")
+    })
   },
   beforeUpdate() {
-    console.log("parent beforeUpdate");
+    console.log("%cbeforeUpdate 父组件", "color: #fbb1be");
   },
   updated() {
-    console.log("parent updated");
+    console.log("%cupdated 父组件", "color: #fbb1be");
   },
 };
 </script>
 
 <template>
   <div id="app">
-    <AComponent :adata="adata" v-if="isShow"/>
-    <div class="b-com-wrapper" v-if="isShow">
+    <AComponent :adata="adata"/>
+    <div class="b-com-wrapper"  v-if="isShow">
       <BComponent
         :options="options"
         width="100%"
@@ -118,6 +126,6 @@ p {
 .b-com-wrapper {
   width: 100%;
   flex-basis: 100%;
-  outline: 1px dashed pink;
+  outline: 1px dashed #fbb1be;
 }
 </style>

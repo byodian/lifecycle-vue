@@ -42,22 +42,22 @@ export default {
     }
   },
   beforeCreate() {
-    console.log('%cbeforeCreate B 组件', 'color: red')
+    console.log('%cbeforeCreate B 组件', 'color: #f25196')
   },
   created() {
-    console.log('%ccreated B 组件', 'color: red')
+    console.log('%ccreated B 组件', 'color: #f25196')
   },
   beforeMount() {
-    console.log('%cbeforeMounte B 组件', 'color: red')
+    console.log('%cbeforeMount B 组件', 'color: #f25196')
   },
   beforeUpdate() {
-    console.log('%cbeforeUpdate B 组件', 'color: red')
+    console.log('%cbeforeUpdate B 组件', 'color: #f25196')
   },
   updated() {
-    console.log('%cupdated B 组件', 'color: red')
+    console.log('%cupdated B 组件', 'color: #f25196')
   },
   mounted () {
-    console.log('%cmounted B 组件', 'color: red')
+    console.log('%cmounted B 组件', 'color: #f25196')
     this.initChart()
   },
   methods: {
