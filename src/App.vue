@@ -66,11 +66,25 @@ export default {
     })
 
     promise.then((data) => {
-      this.adata = {
+      // 为已有对象赋值多个新 property
+      const interObject = {
         name: `byodian${data}`,
         age: '21',
         items: [150, 230, 224, 218, 135, 147, 260]
       }
+
+      // 1. 对象字面量赋值替换
+      // this.adata = interObject
+
+      // 2. 使用 Vue.set(object, propertyName, value)
+      // this.$set(this.adata, 'name', `byodian${data}`)
+      // this.$set(this.adata, 'items', [150, 230, 224, 218, 135, 147, 260])
+
+      // 3. 使用 Object.assign() 赋值替换 
+      // this.adata = Object.assign({}, this.adata, interObject)
+
+      // 4. 使用结构赋值
+      this.adata = { ...this.adata, ...interObject }
     })
   },
   mounted () {
