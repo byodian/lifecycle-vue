@@ -1,19 +1,11 @@
 <template>
-  <div :id="id" :class="className" :style="{ height: height, width: width }" :alt="options.series[0].name" />
+  <div :style="{ height: height, width: width }" :alt="options.series[0].name" />
 </template>
 
 <script>
 export default {
   name: 'Echart',
   props: {
-    className: {
-      type: String,
-      default: 'chart'
-    },
-    id: {
-      type: String,
-      default: 'chart'
-    },
     width: {
       type: String,
       default: '100%'
@@ -41,19 +33,19 @@ export default {
       deep: true
     }
   },
-  beforeCreate() {
+  beforeCreate () {
     console.log('%cbeforeCreate B 组件', 'color: #f25196')
   },
-  created() {
+  created () {
     console.log('%ccreated B 组件', 'color: #f25196')
   },
-  beforeMount() {
+  beforeMount () {
     console.log('%cbeforeMount B 组件', 'color: #f25196')
   },
-  beforeUpdate() {
+  beforeUpdate () {
     console.log('%cbeforeUpdate B 组件', 'color: #f25196')
   },
-  updated() {
+  updated () {
     console.log('%cupdated B 组件', 'color: #f25196')
   },
   mounted () {

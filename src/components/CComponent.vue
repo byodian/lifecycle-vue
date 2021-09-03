@@ -10,24 +10,24 @@ export default {
   props: {
     cdata: String
   },
-  beforeCreate() {
+  beforeCreate () {
     console.log('%cbeforeCreate C 组件', 'color: pink')
   },
-  created() {
+  created () {
     console.log('%ccreated C 组件', 'color: pink')
   },
-  beforeMount() {
+  beforeMount () {
     console.log('%cbeforeMounte C 组件', 'color: pink')
   },
-  mounted() {
+  mounted () {
     console.log('%cmounted C 组件', 'color: pink')
   },
-  beforeUpdate() {
+  beforeUpdate () {
     console.log('%cbeforeUpdate C 组件', 'color: pink')
   },
-  updated() {
+  updated () {
     console.log('%cupdated C 组件', 'color: pink')
-  },
+  }
 
 }
 </script>

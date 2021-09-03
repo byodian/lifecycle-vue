@@ -1,32 +1,34 @@
 <template>
-    <p class="a-com">{{ adata.name }}</p>
+  <p class="a-com">{{ adata.name }}</p>
 </template>
 
 <script>
 export default {
   name: 'A',
   props: {
-    adata: Object,
-    default: () => ({})
+    adata: {
+      type: Object,
+      default: () => ({})
+    }
   },
-  beforeCreate() {
+  beforeCreate () {
     console.log('%cbeforeCreate A 组件', 'color: #f9c30f')
   },
-  created() {
+  created () {
     console.log('%ccreated A 组件', 'color: #f9c30f')
   },
-  beforeMount() {
+  beforeMount () {
     console.log('%cbeforeMount A 组件', 'color: #f9c30f')
   },
-  mounted() {
+  mounted () {
     console.log('%cmounted A 组件', 'color: #f9c30f')
   },
-  beforeUpdate() {
+  beforeUpdate () {
     console.log('%cbeforeUpdate A 组件', 'color: #f9c30f')
   },
-  updated() {
+  updated () {
     console.log('%cupdated A 组件', 'color: #f9c30f')
-  },
+  }
 }
 </script>
 
