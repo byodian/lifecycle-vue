@@ -1,6 +1,7 @@
 <script>
 import AComponent from './components/AComponent.vue'
 import BComponent from './components/BComponent.vue'
+import SlotComponent from './components/SlotComponent.vue'
 
 const debounce = function (callback, delay) {
   let timer
@@ -17,7 +18,8 @@ export default {
   name: 'App',
   components: {
     AComponent,
-    BComponent
+    BComponent,
+    SlotComponent
   },
   data () {
     return {
@@ -45,7 +47,7 @@ export default {
             {
               name: 'a',
               data: newData.items,
-              type: 'line'
+              type: 'line',
             }
           ]
         }
@@ -88,11 +90,10 @@ export default {
     })
   },
   mounted () {
-    console.log('%cmounted 父组件', 'color: pink')
     // 窗口尺寸变化后，强制刷新图表组件宽高
-    window.addEventListener('resize', debounce(() => {
-      this.uid += 1
-    }, 300))
+      window.addEventListener('resize', debounce(() => {
+        this.uid += 1
+      }, 300))
 
     this.$nextTick(() => {
       console.log('%c$nextTick mounted', 'color: pink')
@@ -103,19 +104,45 @@ export default {
   },
   updated () {
     console.log('%cupdated 父组件', 'color: pink')
-  }
+  },
 }
 </script>
 
 <template>
   <div id="app">
-    <AComponent :adata="adata" />
-    <div v-if="isShow" class="b-com-wrapper">
-      <BComponent
-        :key="uid"
-        :options="options"
-        width="100%"
-        height="100%" />
+    <div class="box1">
+      <a-component v-if="isShow" :adata="adata" name="box1" />
+      <div v-if="isShow" class="b-com-wrapper">
+        <b-component
+          :key="uid"
+          name="box1"
+          :options="options"
+          width="100%"
+          height="100%" />
+      </div>
+    </div>
+    <slot-component>
+      <template v-slot:header>
+        <a-component :adata="adata" name="slotComponent" />
+      </template>
+      <template v-slot:main>
+        <b-component
+          :key="uid"
+          name="slotComponent"
+          :options="options"
+          width="100%"
+          height="100%" />
+      </template>
+    </slot-component>
+    <div class="box2">
+      <dv-border-box-1>
+        <b-component
+          :key="uid"
+          name="dv-border-box"
+          :options="options"
+          width="100%"
+          height="100%" />
+      </dv-border-box-1>
     </div>
   </div>
 </template>
@@ -125,10 +152,21 @@ p {
   margin: 0;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.box1 {
   display: flex;
   flex-direction: column;
   height: 300px;
@@ -136,9 +174,13 @@ p {
   outline: 1px dashed #000;
 }
 
+.box2 {
+  height: 300px;
+}
+
 .b-com-wrapper {
   width: 100%;
   flex-basis: 100%;
-  outline: 1px dashed pink;
+  background-color: #f7fce5;
 }
 </style>

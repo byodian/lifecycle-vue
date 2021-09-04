@@ -12,22 +12,22 @@ export default {
     }
   },
   beforeCreate () {
-    console.log('%cbeforeCreate A 组件', 'color: #f9c30f')
+    console.log(`%cbeforeCreate A 组件 - ${this.$attrs.name}`, 'color: #f9c30f')
   },
   created () {
-    console.log('%ccreated A 组件', 'color: #f9c30f')
+    console.log(`%ccreated A 组件 - ${this.$attrs.name}`, 'color: #f9c30f')
   },
   beforeMount () {
-    console.log('%cbeforeMount A 组件', 'color: #f9c30f')
+    console.log(`%cbeforeMount A 组件 - ${this.$attrs.name}`, 'color: #f9c30f')
   },
   mounted () {
-    console.log('%cmounted A 组件', 'color: #f9c30f')
+    console.log(`%cmounted A 组件 - ${this.$attrs.name}`, 'color: #f9c30f')
   },
   beforeUpdate () {
-    console.log('%cbeforeUpdate A 组件', 'color: #f9c30f')
+    console.log(`%cbeforeUpdate A 组件 - ${this.$attrs.name}`, 'color: #f9c30f')
   },
   updated () {
-    console.log('%cupdated A 组件', 'color: #f9c30f')
+    console.log(`%cupdated A 组件 - ${this.$attrs.name}`, 'color: #f9c30f')
   }
 }
 </script>

@@ -34,22 +34,22 @@ export default {
     }
   },
   beforeCreate () {
-    console.log('%cbeforeCreate B 组件', 'color: #f25196')
+    console.log(`%cbeforeCreate B 组件 - ${this.$attrs.name}`, 'color: #f25196')
   },
   created () {
-    console.log('%ccreated B 组件', 'color: #f25196')
+    console.log(`%ccreated B 组件 - ${this.$attrs.name}`, 'color: #f25196')
   },
   beforeMount () {
-    console.log('%cbeforeMount B 组件', 'color: #f25196')
+    console.log(`%cbeforeMount B 组件 - ${this.$attrs.name}`, 'color: #f25196')
   },
   beforeUpdate () {
-    console.log('%cbeforeUpdate B 组件', 'color: #f25196')
+    console.log(`%cbeforeUpdate B 组件 - ${this.$attrs.name}`, 'color: #f25196')
   },
   updated () {
-    console.log('%cupdated B 组件', 'color: #f25196')
+    console.log(`%cupdated B 组件 - ${this.$attrs.name}`, 'color: #f25196')
   },
   mounted () {
-    console.log('%cmounted B 组件', 'color: #f25196')
+    console.log(`%cmounted B 组件 - ${this.$attrs.name}`, 'color: #f25196')
     this.initChart()
   },
   methods: {
