@@ -3,6 +3,9 @@
 </template>
 
 <script>
+import zhejiangMap from '../assets/zhejiang.json'
+import YRDRMap from '../assets/Yangtze_River_Delta_region.json'
+console.log(YRDRMap)
 export default {
   name: 'Echart',
   props: {
@@ -55,6 +58,7 @@ export default {
   methods: {
     initChart () {
       // 初始化echart
+      this.$echarts.registerMap('ZJ', zhejiangMap)
       this.chart = this.$echarts.init(this.$el)
       this.chart.setOption(this.options, true)
     }
